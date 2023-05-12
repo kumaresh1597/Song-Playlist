@@ -48,5 +48,14 @@ public class Album {
         }
         return "Song already present";
     }
+
+    public Optional<Song> searchInAlbum(String songName) {
+        for(Song s : trackList){
+            if(s.getTitle().equals(songName)){
+                return  Optional.of(s);
+            }
+        }
+        return Optional.empty();
+    }
 }
 
