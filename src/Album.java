@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,12 @@ public class Album {
         this.title = title;
         this.artist = artist;
         this.trackList = trackList;
+    }
+
+    public Album(String title, String artist) {
+        this.title = title;
+        this.artist = artist;
+        this.trackList = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -49,13 +56,18 @@ public class Album {
         return "Song already present";
     }
 
-    public Optional<Song> searchInAlbum(String songName) {
+    public Optional<Song> searchInAlbumBySongName(String songName) {
         for(Song s : trackList){
             if(s.getTitle().equals(songName)){
                 return  Optional.of(s);
             }
         }
         return Optional.empty();
+    }
+
+    public Optional<Song> searchInAlbumByTrackNumber(int trackNumber) {
+        if(trackNumber > trackList.size()) return Optional.empty();
+        return Optional.of(trackList.get(trackNumber-1));
     }
 }
 

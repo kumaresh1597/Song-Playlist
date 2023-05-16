@@ -33,4 +33,8 @@ public class Song {
     public void setDuration(int duration) {
         this.duration = duration;
     }
+
+    public  String toString(){
+        return this.title +" | "+this.artist+" | "+this.duration;
+    }
 }
